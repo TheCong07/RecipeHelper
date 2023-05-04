@@ -1,0 +1,25 @@
+<div *ngFor="let result of results; let i = index">
+  <div class="list-group mb-4">
+    <a class="list-group-item list-group-item-action" aria-current="true">
+      <div class="d-flex w-100 justify-content-center">
+        <h5>{{ result.listName }}</h5>
+      </div>
+      <div class="d-flex w-100 justify-content-center">
+        <small>{{ result.dateCreate }}</small>
+      </div>
+      <p class="mb-1">{{ result.description }}</p>
+      <div class="list-group">
+        <div *ngFor="let item of result.recipe_info; let j = index">
+          <a
+            [routerLink]="['/recipe/', item.recipeID]"
+            class="list-group-item list-group-item-action col-6"
+          >
+            <div class="d-flex w-100 justify-content-between text-center">
+              <h5 class="mb-1">{{ item.name }}</h5>
+            </div>
+          </a>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+
+    <div class="row">
+      <div class="row g-3 d-flex justify-content-center">
+        <div class="col-auto">
+          <p class="text-center">What Recipe you want to find:</p>
+          <!-- <input type="text" readonly class="form-control-plaintext d-flex flex-wrap" value="What Recipe you want to find:"> -->
+        </div>
+        <div class="col-auto">
+          <label for="recipeInput" class="visually-hidden">Recipe</label>
+          <input
+            type="text"
+            class="form-control"
+            id="recipeInput"
+            placeholder="Recipe..."
+            (keyup)="findRecipe($event)"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>Popular Recipes</p>
+        <div *ngFor="let result of filter; let i = index">
+          <div class="list-group mb-4">
+            <a
+              [routerLink]="['/recipeList/', result.listID]"
+              class="list-group-item list-group-item-action"
+              aria-current="true"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ result.listName }}</h5>
+                <small>{{ result.dateCreate }}</small>
+              </div>
+              <p class="mb-1">{{ result.description }}</p>
+              <div class="list-group">
+                <div *ngFor="let item of result.recipe_info; let j = index">
+                  <a
+                    [routerLink]="['/recipe/', item.recipeID]"
+                    class="list-group-item list-group-item-action col-6"
+                    >{{ item.name }}</a
+                  >
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <label for="substitutionInput" class="form-label"
+          >Requested Substitution</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="substitutionInput"
+          placeholder="Substitution..."
+        />
+      </div>
+    </div>

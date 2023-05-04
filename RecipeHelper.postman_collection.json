@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "6449fd37-1ee9-4084-99d1-71a30efd0658",
+		"name": "RecipeHelper",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25556009"
+	},
+	"item": [
+		{
+			"name": "All Recipelists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/recipelist/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"recipelist",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "One Recipelist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/recipelist/1a12341fe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"recipelist",
+						"1a12341fe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "One Customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/456wecds",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"456wecds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Recipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "One Recipe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post RecipeList",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/recipeList/recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"recipeList",
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

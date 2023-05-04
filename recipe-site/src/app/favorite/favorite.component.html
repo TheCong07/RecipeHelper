@@ -1,0 +1,174 @@
+<div>
+  <div class="row mb-2">
+    <div class="col-9"></div>
+    <div class="col-3">
+      <button
+        type="button"
+        class="btn btn-primary mt-2"
+        data-bs-toggle="modal"
+        data-bs-target="#recipeModal"
+      >
+        Create Recipe List
+      </button>
+
+      <div
+        class="modal fade"
+        id="recipeModal"
+        tabindex="-1"
+        aria-labelledby="recipeModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="recipeModalLabel">New Recipe List</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form
+                [formGroup]="recipeListForm"
+                (ngSubmit)="createRecipeList()"
+              >
+                <div class="mb-3">
+                  <label for="listName" class="form-label fw-bold"
+                    >List Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="listName"
+                    placeholder="A name for your list to display..."
+                    formControlName="listName"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label fw-bold"
+                    >Description</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    placeholder="Write something about your recipe list..."
+                    formControlName="description"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary" id="createRecipe">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngIf="results; else emptyList">
+      <div *ngFor="let result of results; let i = index">
+        <div class="list-group mb-4">
+          <a class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-center">
+              <div class="col-10">
+                <h5 class="text-center">{{ result.listName }}</h5>
+              </div>
+              <div class="col-2">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#recipeModal"
+                >
+                  Add Recipe
+                </button>
+              </div>
+            </div>
+            <div class="d-flex w-100 justify-content-center">
+              <small>{{ result.dateCreate }}</small>
+            </div>
+            <p class="mb-1">{{ result.description }}</p>
+            <div class="list-group">
+              <div *ngFor="let item of result.recipe_info; let j = index">
+                <a
+                  [routerLink]="['/recipe/', item.recipeID]"
+                  class="list-group-item list-group-item-action col-6"
+                >
+                  <div class="d-flex w-100 justify-content-between text-center">
+                    <h5 class="mb-1">{{ item.name }}</h5>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #emptyList>
+      <div>
+        <p class="empty-favorite-recipes">
+          You don't have any favorite recipe list
+        </p>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="recipeModal"
+  tabindex="-1"
+  aria-labelledby="recipeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="recipeModalLabel">New Recipe</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="recipeListForm" (ngSubmit)="createRecipeList()">
+          <div class="mb-3">
+            <label for="recipeName" class="form-label fw-bold"
+              >Recipe Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="recipeName"
+              placeholder="A name for your recipe to display..."
+              formControlName="recipeName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="ingredients" class="form-label fw-bold"
+              >Ingredients</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="ingredients"
+              placeholder="What ingredients..."
+              formControlName="ingredients"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary" id="createRecipe">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

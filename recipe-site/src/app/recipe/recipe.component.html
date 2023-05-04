@@ -1,0 +1,31 @@
+
+    <div class="row">
+      <div class="row g-3 d-flex justify-content-center">
+        <div class="col-auto">
+          <!-- <input type="text" readonly class="form-control-plaintext d-flex flex-wrap" value="What Recipe you want to find:"> -->
+        </div>
+        <div class="col-auto">
+          <label for="recipeInput" class="visually-hidden">Recipe</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div *ngIf="recipe">
+          <div *ngFor="let info of recipe">
+            <h1>{{ info.name }}</h1>
+            <h2>Ingredients</h2>
+
+            <div *ngFor="let ingredients of info.ingredients; index as i">
+              <p>O {{ ingredients }}</p>
+            </div>
+            <h2>Steps</h2>
+
+            <div *ngFor="let steps of info.steps; index as i">
+              <p>{{ i + 1 }}: {{ steps }}</p>
+            </div>
+            <p>{{ info.source }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
